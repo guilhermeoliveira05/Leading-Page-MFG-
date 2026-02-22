@@ -1,0 +1,149 @@
+:root {
+  --verde: #22A6A9;
+  --dourado: #D4AF37;
+  --branco: #ffffff;
+  --preto: #111111;
+  --cinza: #f8f8f8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--cinza);
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--branco);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background: var(--branco);
+  width: 200px;
+  box-shadow: -2px 5px 10px rgba(0,0,0,0.1);
+}
+
+.nav a {
+  padding: 15px;
+  text-decoration: none;
+  color: var(--preto);
+  border-bottom: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  background: var(--verde);
+  color: white;
+}
+
+.menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* CAROUSEL */
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+/* CATEGORIAS */
+
+.categorias {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.categorias h2 {
+  margin-bottom: 20px;
+  color: var(--verde);
+}
+
+.categoria-card {
+  background: var(--branco);
+  margin-bottom: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.categoria-card:hover {
+  transform: translateY(-5px);
+}
+
+.categoria-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.categoria-card h3 {
+  padding: 15px;
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+
+  .nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    box-shadow: none;
+  }
+
+  .nav a {
+    border: none;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .categorias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+}
