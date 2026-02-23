@@ -1,58 +1,260 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFG - Arte e Fé</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="description" content="Terços artesanais, abençoados e únicos. Encontre o terço perfeito para sua devoção."/>
+  <meta name="theme-color" content="#006e68"/>
+  <title>Casa dos Terços — Artesanais &amp; Abençoados</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">
-    <img src="logo-mfg.png" alt="MFG Logo">
-  </div>
+  <!-- ══════════════════════════════════
+       OVERLAY (menu mobile)
+  ══════════════════════════════════ -->
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
 
-  <nav class="nav" id="nav">
-    <a href="#">Início</a>
-    <a href="#">Produtos</a>
-    <a href="#">Sobre</a>
-    <a href="#">Contato</a>
-  </nav>
+  <!-- ══════════════════════════════════
+       HEADER
+  ══════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="header-top">
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-</header>
+      <!-- Logo -->
+      <a href="index.html" class="logo" aria-label="Início — MFG Arte e Fé">
+        <img src="image/logo-mfg.png" alt="MFG Arte e Fé" class="logo-img"/>
+      </a>
 
-<!-- CARROSSEL -->
-<section class="carousel">
-  <div class="slides">
-    <img src="capa-terço.png" class="slide active">
-    <img src="pulseiras-capa.png" class="slide">
-    <img src="1.png" class="slide">
-  </div>
-</section>
+      <!-- Hamburger -->
+      <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
 
-<!-- CATEGORIAS -->
-<section class="categorias">
-  <h2>Categorias</h2>
+    <!-- Menu -->
+    <nav class="main-nav" aria-label="Menu principal">
+      <ul role="list">
+        <li><a href="#sobre"   class="active">Sobre</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="categoria-card">
-    <img src="capa-terço.png" alt="Terços">
-    <h3>Terços</h3>
-  </div>
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="hero" aria-label="Apresentação">
+    <div class="hero-ornament" aria-hidden="true">✦</div>
+    <h1>Terços feitos com<br/><em>fé e devoção</em></h1>
+    <p>Artesanais · Abençoados · Únicos</p>
+    <a href="#produtos" class="hero-cta" aria-label="Ver todos os produtos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" width="16" height="16">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      Ver produtos
+    </a>
+  </section>
 
-  <div class="categoria-card">
-    <img src="pulseiras-capa.png" alt="Pulseiras Cristal">
-    <h3>Pulseiras Cristal</h3>
-  </div>
+  <!-- ══════════════════════════════════
+       CARROSSEL — Destaques
+  ══════════════════════════════════ -->
+  <section class="section carousel-section" id="sobre" aria-labelledby="carousel-title">
+    <div class="section-header">
+      <span class="section-label">Coleção especial</span>
+      <h2 class="section-title" id="carousel-title">Destaques da <em>Semana</em></h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
 
-  <div class="categoria-card">
-    <img src="1.png" alt="Hematita">
-    <h3>Pulseiras Hematita</h3>
-  </div>
+    <div class="carousel-wrapper" role="region" aria-label="Carrossel de produtos em destaque">
 
-</section>
+      <!-- Seta anterior -->
+      <button class="carousel-arrow carousel-arrow-prev" aria-label="Produto anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
 
+      <!-- Track -->
+      <div class="carousel-track-container">
+        <ul class="carousel-track" role="list">
+
+          <li class="carousel-card">
+            <div class="carousel-card-img">
+              <img src="https://placehold.co/400x300/e8dcc8/8a6a30?text=Terço+Fátima" alt="Terço Nossa Senhora de Fátima" loading="lazy"/>
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-tag">Madeira Oliveira</span>
+              <p class="carousel-card-name">Terço N. Sra. de Fátima</p>
+              <p class="carousel-card-price">R$ 89,90</p>
+            </div>
+          </li>
+
+          <li class="carousel-card">
+            <div class="carousel-card-img">
+              <img src="https://placehold.co/400x300/d6c9b8/6b4c2e?text=Terço+Cristal" alt="Terço de Cristal Rosa" loading="lazy"/>
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-tag">Cristal Rosa</span>
+              <p class="carousel-card-name">Terço Sagrado Coração</p>
+              <p class="carousel-card-price">R$ 149,90</p>
+            </div>
+          </li>
+
+          <li class="carousel-card">
+            <div class="carousel-card-img">
+              <img src="https://placehold.co/400x300/cfc4b0/5a3d22?text=Terço+Pedra" alt="Terço de Pedra Ágata" loading="lazy"/>
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-tag">Pedra Ágata</span>
+              <p class="carousel-card-name">Terço São Francisco</p>
+              <p class="carousel-card-price">R$ 119,00</p>
+            </div>
+          </li>
+
+          <li class="carousel-card">
+            <div class="carousel-card-img">
+              <img src="https://placehold.co/400x300/e0d5c5/7a5535?text=Terço+Infantil" alt="Terço Infantil" loading="lazy"/>
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-tag">Acrílico Colorido</span>
+              <p class="carousel-card-name">Terço Infantil Anjo</p>
+              <p class="carousel-card-price">R$ 45,90</p>
+            </div>
+          </li>
+
+          <li class="carousel-card">
+            <div class="carousel-card-img">
+              <img src="https://placehold.co/400x300/d8cfc0/604530?text=Terço+Pérola" alt="Terço de Pérola Natural" loading="lazy"/>
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-tag">Pérola Natural</span>
+              <p class="carousel-card-name">Terço N. Sra. Aparecida</p>
+              <p class="carousel-card-price">R$ 249,00</p>
+            </div>
+          </li>
+
+          <li class="carousel-card">
+            <div class="carousel-card-img">
+              <img src="https://placehold.co/400x300/c8bfb0/503828?text=Terço+Sementes" alt="Terço de Sementes" loading="lazy"/>
+            </div>
+            <div class="carousel-card-body">
+              <span class="carousel-card-tag">Sementes do Brasil</span>
+              <p class="carousel-card-name">Terço Ecumênico da Paz</p>
+              <p class="carousel-card-price">R$ 69,90</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Seta próxima -->
+      <button class="carousel-arrow carousel-arrow-next" aria-label="Próximo produto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+
+    </div><!-- .carousel-wrapper -->
+
+    <!-- Dots -->
+    <div class="carousel-dots" role="tablist" aria-label="Navegar pelo carrossel"></div>
+
+  </section>
+
+  <!-- ══════════════════════════════════
+       CATEGORIAS
+  ══════════════════════════════════ -->
+  <section class="section categories-section" id="produtos" aria-labelledby="cat-title">
+    <div class="section-header">
+      <span class="section-label">Explore</span>
+      <h2 class="section-title" id="cat-title">Nossas <em>Categorias</em></h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="categories-grid">
+
+      <!-- Categoria: Terços -->
+      <a href="Pages/tercos.html" class="category-card" aria-label="Ver categoria Terços">
+        <div class="category-img">
+          <img src="https://placehold.co/300x300/e8dcc8/8a6a30?text=Terços" alt="Categoria Terços" loading="lazy"/>
+        </div>
+        <div class="category-body">
+          <p class="category-name">Terços</p>
+          <p class="category-count">6 produtos</p>
+          <span class="category-arrow" aria-hidden="true">
+            Ver tudo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Placeholder para futuras categorias -->
+      <!--
+      <a href="#" class="category-card">
+        <div class="category-img">
+          <img src="..." alt="..."/>
+        </div>
+        <div class="category-body">
+          <p class="category-name">Nova Categoria</p>
+          <p class="category-count">em breve</p>
+        </div>
+      </a>
+      -->
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       BANNER WHATSAPP
+  ══════════════════════════════════ -->
+  <section class="whatsapp-banner" id="contato" aria-labelledby="wa-title">
+    <h2 id="wa-title">Dúvidas? Fale conosco</h2>
+    <p>Atendimento personalizado pelo WhatsApp</p>
+    <a
+      href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20terços."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-btn"
+      aria-label="Abrir WhatsApp para contato"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Chamar no WhatsApp
+    </a>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <p class="footer-logo">MFG <span>Arte e Fé</span></p>
+    <p class="footer-desc">Artesanais · Abençoados · Únicos</p>
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <a href="#sobre">Sobre</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+      <a href="tercos.html">Terços</a>
+    </nav>
+    <div class="footer-divider" aria-hidden="true"></div>
+    <p class="footer-copy">© 2025 MFG Arte e Fé — feito com <span>♥</span> e devoção</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
