@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pulseiras de Regulagem — MFG Arte e Fé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f9f4ec; --warm: #f0e8d6; --gold: #b8965a; --gold-light: #d4b07a;
+      --gold-dark: #8a6a30; --brown: #3d2b1a; --brown-soft: #6b4c2e;
+      --whatsapp: #25D366; --whatsapp-dark: #1da851;
+    }
+    body { background-color: var(--cream); color: var(--brown); font-family: 'Jost', sans-serif; min-height: 100vh; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px; margin: 1.5rem 2rem 0;
+      font-size: 0.85rem; color: var(--gold-dark); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link svg { width: 16px; height: 16px; }
+    header {
+      background: var(--brown); padding: 2.5rem 2rem 2rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 120%, rgba(184,150,90,0.25) 0%, transparent 70%);
+    }
+    .header-ornament {
+      display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.75rem;
+    }
+    .header-ornament span { display: block; width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+    .header-ornament span:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
+    .header-ornament svg { color: var(--gold); width: 22px; height: 22px; }
+    header h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 500; color: var(--cream); letter-spacing: 0.05em; line-height: 1.1;
+    }
+    header h1 em { color: var(--gold-light); font-style: italic; }
+    header p {
+      margin-top: 0.6rem; font-size: 0.85rem; font-weight: 300;
+      letter-spacing: 0.18em; text-transform: uppercase; color: rgba(249,244,236,0.55);
+    }
+    .divider {
+      display: flex; align-items: center; gap: 1rem; padding: 2rem 2rem 0;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent); opacity: 0.5;
+    }
+    .divider-text {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 0.9rem; color: var(--gold-dark); white-space: nowrap;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem; padding: 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .card {
+      background: #fff; border-radius: 4px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(61,43,26,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex; flex-direction: column; animation: fadeUp 0.5s ease both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .card:nth-child(1) { animation-delay: 0.05s; } .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; } .card:nth-child(4) { animation-delay: 0.26s; }
+    .card:nth-child(5) { animation-delay: 0.33s; } .card:nth-child(6) { animation-delay: 0.40s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(61,43,26,0.14); }
+    .card-img { position: relative; overflow: hidden; aspect-ratio: 1/1; background: var(--warm); }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .card:hover .card-img img { transform: scale(1.05); }
+    .card-badge {
+      position: absolute; top: 12px; left: 12px; background: var(--gold); color: #fff;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 2px;
+    }
+    .card-body { padding: 1.2rem 1.3rem 0.8rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+    .card-material { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); }
+    .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--brown); line-height: 1.25; }
+    .card-desc { font-size: 0.8rem; color: var(--brown-soft); font-weight: 300; line-height: 1.5; }
+    .card-price { margin-top: auto; padding-top: 0.8rem; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--brown); }
+    .card-price small { font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 300; color: var(--brown-soft); margin-right: 2px; }
+    .card-footer { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(184,150,90,0.2); }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 0.85rem 0.5rem; font-family: 'Jost', sans-serif; font-size: 0.78rem;
+      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; border: none;
+    }
+    .btn-cart { background: var(--gold); color: #fff; }
+    .btn-cart:hover { background: var(--gold-dark); }
+    .btn-whatsapp { background: var(--whatsapp); color: #fff; }
+    .btn-whatsapp:hover { background: var(--whatsapp-dark); }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    footer {
+      text-align: center; padding: 2.5rem 1rem; font-size: 0.75rem;
+      color: var(--brown-soft); letter-spacing: 0.1em;
+      border-top: 1px solid rgba(184,150,90,0.2); margin-top: 1rem;
+    }
+    footer span { color: var(--gold); }
+    @media (max-width: 480px) { .grid { padding: 1rem; gap: 1.2rem; } }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar às Categorias
+  </a>
+
+  <header>
+    <div class="header-ornament">
+      <span></span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 0 1 1 1v1.07A8 8 0 0 1 20 12a8 8 0 0 1-7 7.93V21a1 1 0 1 1-2 0v-1.07A8 8 0 0 1 4 12a8 8 0 0 1 7-7.93V3a1 1 0 0 1 1-1zm0 4a6 6 0 1 0 0 12A6 6 0 0 0 12 6zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+      <span></span>
+    </div>
+    <h1>Pulseiras de <em>Regulagem</em></h1>
+    <p>Ajustável · Prática · Devocional</p>
+  </header>
+
+  <div class="divider"><span class="divider-text">Tamanho perfeito para sua fé</span></div>
+
+  <main class="grid">
+
+    <!-- Terço 01 — img 2.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/2.png" alt="Terço 01"/>
+        <span class="card-badge">Novo</span>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 01</h2>
+        <p class="card-desc">Terço artesanal confeccionado com esmero, ideal para a oração diária.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-01', 'Terço Devocional 01', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2001" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 02 — img 3.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/3.png" alt="Terço 02"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 02</h2>
+        <p class="card-desc">Peça artesanal com acabamento delicado, perfeita para presentear.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-02', 'Terço Devocional 02', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2002" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 03 — img 4.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/4.png" alt="Terço 03"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 03</h2>
+        <p class="card-desc">Terço com contas trabalhadas à mão, símbolo de fé e devoção.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-03', 'Terço Devocional 03', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2003" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 04 — img 5.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/5.png" alt="Terço 04"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 04</h2>
+        <p class="card-desc">Terço artesanal com acabamento especial, para momentos de oração.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-04', 'Terço Devocional 04', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="/https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2004" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 05 — img 6.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/6.png" alt="Terço 05"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 05</h2>
+        <p class="card-desc">Terço artesanal com contas coloridas, lindo para uso e presente.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-05', 'Terço Devocional 05', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2005" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 06 — img 7.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/7.png" alt="Terço 06"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 06</h2>
+        <p class="card-desc">Terço artesanal com medalha central, feito com muito carinho e fé.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-06', 'Terço Devocional 06', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2006" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 07 — img 8.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/8.png" alt="Terço 07"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 07</h2>
+        <p class="card-desc">Terço artesanal com contas especiais, ideal para a devoção diária.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-07', 'Terço Devocional 07', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2007" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 08 — img 9.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/9.png" alt="Terço 08"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 08</h2>
+        <p class="card-desc">Terço artesanal com acabamento refinado, peça única de arte sacra.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-08', 'Terço Devocional 08', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2008" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 09 — img 10.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/10.png" alt="Terço 09"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 09</h2>
+        <p class="card-desc">Terço artesanal com contas trabalhadas, beleza e espiritualidade.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-09', 'Terço Devocional 09', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2009" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 10 — img 11.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/11.png" alt="Terço 10"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 10</h2>
+        <p class="card-desc">Terço artesanal com design exclusivo, para sua oração com mais devoção.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-10', 'Terço Devocional 10', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2010" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 11 — img 12.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/12.png" alt="Terço 11"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 11</h2>
+        <p class="card-desc">Terço artesanal com contas especiais, símbolo de amor e fé.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-11', 'Terço Devocional 11', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2011" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 12 — img 13.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/13.png" alt="Terço 12"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 12</h2>
+        <p class="card-desc">Terço artesanal com acabamento especial, para momentos sagrados.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-12', 'Terço Devocional 12', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2012" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 13 — img 14.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/14.png" alt="Terço 13"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 13</h2>
+        <p class="card-desc">Terço artesanal com contas delicadas, peça de arte e espiritualidade.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-13', 'Terço Devocional 13', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2013" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 14 — img 15.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/15.png" alt="Terço 14"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 14</h2>
+        <p class="card-desc">Terço artesanal com medalha especial, feito com dedicação e fé.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-14', 'Terço Devocional 14', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2014" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- Terço 15 — img 16.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/16.png" alt="Terço 14"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 14</h2>
+        <p class="card-desc">Terço artesanal com medalha especial, feito com dedicação e fé.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-14', 'Terço Devocional 14', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2014" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+
+
+    <!-- Terço 16 — img 17.png -->
+    <article class="card">
+      <div class="card-img">
+        <img src="/Image/tercosUnidade/17.png" alt="Terço 14"/>
+      </div>
+      <div class="card-body">
+        <span class="card-material">Terço Artesanal</span>
+        <h2 class="card-name">Terço Devocional 14</h2>
+        <p class="card-desc">Terço artesanal com medalha especial, feito com dedicação e fé.</p>
+        <div class="card-price"><small>R$</small>29,90</div>
+      </div>
+      <div class="card-footer">
+        <button onclick="addToCart('terco-14', 'Terço Devocional 14', 29.9)" class="btn btn-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Carrinho
+        </button>
+        <a href="https://wa.me/55119999?text=Olá!%20Tenho%20interesse%20no%20Terço%20Devocional%2014" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.856L0 24l6.335-1.51C8.05 23.455 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.518-5.17-1.418l-.37-.22-3.763.897.948-3.67-.242-.38A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+  <footer>
+    Feito com <span>♥</span> &nbsp;·&nbsp; MFG Arte e Fé — Artesanais e Abençoados
+  </footer>
+
+  <link rel="stylesheet" href="../cart.css"/>
+  <button class="cart-float" onclick="openCartModal()" aria-label="Abrir carrinho">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+    <span class="cart-badge-count" style="display:none">0</span>
+  </button>
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCartModal()">
+    <div class="cart-modal" onclick="event.stopPropagation()">
+      <div class="cart-modal-header">
+        <h3>Seu Carrinho</h3>
+        <button onclick="closeCartModal()" class="cart-close">&times;</button>
+      </div>
+      <div class="cart-modal-body" id="cartBody"></div>
+      <div class="cart-modal-footer" id="cartFooter"></div>
+    </div>
+  </div>
+  <script src="../cart.js"></script>
+
+</body>
+</html>
+
